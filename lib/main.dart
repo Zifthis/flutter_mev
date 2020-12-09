@@ -9,7 +9,10 @@ class MevApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainScreen(),
+      initialRoute: MainScreen.id,
+      routes: {
+        MainScreen.id: (context) => MainScreen(),
+      },
     );
   }
 }
