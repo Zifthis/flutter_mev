@@ -3,13 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mev/const/constants.dart';
 import 'package:flutter_mev/models/mev_models.dart';
 import 'package:flutter_mev/service/api_provider.dart';
-import 'package:flutter_mev/view/departments/menadzment.dart';
-import 'package:flutter_mev/view/departments/odrzivi_razvoj.dart';
-import 'package:flutter_mev/view/departments/racunarstvo.dart';
 import 'package:flutter_mev/view/detail_screen.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_mev/view/detail_screen.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   static const String id = 'main_screen';
@@ -20,7 +15,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   Future<MevModels> _mevModels;
-
 
   @override
   void initState() {

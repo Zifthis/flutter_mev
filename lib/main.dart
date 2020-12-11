@@ -17,7 +17,6 @@ class MevApp extends StatefulWidget {
 
 class _MevAppState extends State<MevApp> {
   int _pageIndex = 0;
-  GlobalKey _bottomNavigationKey = GlobalKey();
 
   final MainScreen _mainScreen = MainScreen();
   final Racunarstvo _racunarstvo = Racunarstvo();
@@ -26,7 +25,7 @@ class _MevAppState extends State<MevApp> {
 
   Widget _showPage = new MainScreen();
 
-  Widget _pageChoser(int page) {
+  Widget _pageChooser(int page) {
     switch (page) {
       case 0:
         return _mainScreen;
@@ -38,9 +37,6 @@ class _MevAppState extends State<MevApp> {
         return _menadzment;
         break;
       case 3:
-        return _menadzment;
-        break;
-      case 4:
         return _odrziviRazvoj;
         break;
       default:
@@ -67,10 +63,11 @@ class _MevAppState extends State<MevApp> {
           ],
           onTap: (int tappedIndex) {
             setState(() {
-              _showPage = _pageChoser(tappedIndex);
+              _showPage = _pageChooser(tappedIndex);
             });
           },
         ),
+        body: _showPage,
       ),
     );
   }
