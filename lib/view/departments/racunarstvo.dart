@@ -33,7 +33,7 @@ class _RacunarstvoState extends State<Racunarstvo> {
               child: ClipPath(
                 clipper: BackgroundClipper(),
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.93,
+                  width: MediaQuery.of(context).size.width * 0.96,
                   height: MediaQuery.of(context).size.height * 0.85,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -51,8 +51,18 @@ class _RacunarstvoState extends State<Racunarstvo> {
                         itemCount: snapshot.data.novosti.length,
                         itemBuilder: (context, index) {
                           var racNovosti = snapshot.data.novosti[index];
+                          bool isEmpty;
                           if (racNovosti.tipNovosti == '2') {
                             return Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: racunarstvoMainColor,
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                color: racunarstvoMainColor.withOpacity(0.5),
+                              ),
                               height: 100,
                               margin: const EdgeInsets.all(8),
                               child: Row(
@@ -60,7 +70,7 @@ class _RacunarstvoState extends State<Racunarstvo> {
                                   Card(
                                     clipBehavior: Clip.antiAlias,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(24),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: AspectRatio(
                                         aspectRatio: 1,
@@ -69,7 +79,7 @@ class _RacunarstvoState extends State<Racunarstvo> {
                                           fit: BoxFit.cover,
                                         )),
                                   ),
-                                  SizedBox(width: 16),
+                                  SizedBox(width: 10),
                                   Flexible(
                                     child: Column(
                                       crossAxisAlignment:
@@ -79,15 +89,24 @@ class _RacunarstvoState extends State<Racunarstvo> {
                                           racNovosti.naslov,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 22,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           racNovosti.podNaslov,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: 17,
+                                          ),
+                                          maxLines: 3,
+                                        ),
+                                        Text(
+                                          racNovosti.datumObjave.toString(),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                          ),
+                                          textAlign: TextAlign.right,
                                         ),
                                       ],
                                     ),
