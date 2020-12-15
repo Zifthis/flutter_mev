@@ -54,7 +54,10 @@ class _MevAppState extends State<MevApp> {
           height: 65.0,
           items: [
             Icon(Icons.home, size: 30),
-            Icon(Icons.computer_rounded ,size: 30,),
+            Icon(
+              Icons.computer_rounded,
+              size: 30,
+            ),
             Icon(Icons.people_alt, size: 30),
             Icon(Icons.wash_sharp, size: 30),
           ],
