@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mev/components/banner_title.dart';
 import 'package:flutter_mev/components/clip_block.dart';
 import 'package:flutter_mev/components/list_builder.dart';
 import 'package:flutter_mev/const/constants.dart';
@@ -44,11 +45,15 @@ class _RacunarstvoState extends State<Racunarstvo> {
                 ),
               ),
             ),
-            NewsList(
-              mevModels: _mevModels,
-              newsType: '2',
-              colorBorder: racunarstvoMainColor,
-              colorFill: racunarstvoMainColor.withOpacity(0.5),
+            BannerTitle(titleName: 'Računarstvo', color: racunarstvoMainColor,),
+            Padding(
+              padding: const EdgeInsets.only(top: 130.0, left: 6.7, right: 6.7, bottom: 10),
+              child: NewsList(
+                mevModels: _mevModels,
+                newsType: '2',
+                colorBorder: racunarstvoMainColor,
+                colorFill: racunarstvoMainColor.withOpacity(0.5),
+              ),
             ),
           ],
         ),
@@ -56,3 +61,5 @@ class _RacunarstvoState extends State<Racunarstvo> {
     );
   }
 }
+
+

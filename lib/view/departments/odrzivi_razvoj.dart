@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mev/components/banner_title.dart';
 import 'package:flutter_mev/components/clip_block.dart';
 import 'package:flutter_mev/const/constants.dart';
 import 'package:flutter_mev/components/list_builder.dart';
@@ -44,11 +45,15 @@ class _OdrziviRazvojState extends State<OdrziviRazvoj> {
                 ),
               ),
             ),
-            NewsList(
-              mevModels: _mevModels,
-              newsType: '4',
-              colorBorder: razvojMainColor,
-              colorFill: razvojMainColor.withOpacity(0.5),
+            BannerTitle(titleName: 'Održivi Razvoj', color: razvojMainColor,),
+            Padding(
+              padding: const EdgeInsets.only(top: 130.0, left: 6.7, right: 6.7, bottom: 10),
+              child: NewsList(
+                mevModels: _mevModels,
+                newsType: '4',
+                colorBorder: razvojMainColor,
+                colorFill: razvojMainColor.withOpacity(0.5),
+              ),
             ),
           ],
         ),
