@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mev/models/mev_models.dart';
+import 'package:flutter_mev/view/detail_screen.dart';
 
 class NewsList extends StatelessWidget {
   const NewsList(
@@ -69,7 +70,7 @@ class NewsList extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 17,
                                 ),
-                                maxLines: 3,
+                                maxLines: 2,
                               ),
                               Text(
                                 racNovosti.datumObjave.toString(),
@@ -78,6 +79,28 @@ class NewsList extends StatelessWidget {
                                   fontSize: 10,
                                 ),
                                 textAlign: TextAlign.right,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, a, b) =>
+                                          DetailScreen(
+                                        novosti: snapshot.data.novosti[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Prikaži više',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  textAlign: TextAlign.right,
+                                ),
                               ),
                             ],
                           ),
