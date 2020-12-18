@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mev/components/banner_title.dart';
 import 'package:flutter_mev/components/clip_block.dart';
 import 'package:flutter_mev/const/constants.dart';
 import 'package:flutter_mev/components/list_builder.dart';
@@ -13,6 +12,7 @@ class Menadzment extends StatefulWidget {
 
 class _MenadzmentState extends State<Menadzment> {
   Future<MevModels> _mevModels;
+  bool isSearching = false;
 
   @override
   void initState() {
@@ -21,41 +21,83 @@ class _MenadzmentState extends State<Menadzment> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [gradientStartColor, gradientEndColor],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.3, 0.7])),
-      child: Center(
-        child: Stack(
-          children: [
-            Center(
-              child: ClipPath(
-                clipper: BackgroundClipper(),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.96,
-                  height: MediaQuery.of(context).size.height * 0.85,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [menadzmentMainColor, menadzmentEndColor],
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight)),
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          isSearching
+              ? IconButton(
+                  icon: Icon(Icons.cancel, color: Colors.white),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.search, color: Colors.white),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+
+                    });
+                  },
                 ),
+        ],
+        backgroundColor: Colors.lightBlue,
+        title: !isSearching
+            ? Text(
+              'Menadžment',
+              style: TextStyle(
+                fontFamily: 'Verdana',
+                fontSize: 20,
+                color: Colors.white,
               ),
-            ),
-            BannerTitle(titleName: 'Menadžment', color: menadzmentMainColor,),
-            Padding(
-              padding: const EdgeInsets.only(top: 130.0, left: 6.7, right: 6.7, bottom: 10),
-              child: NewsList(
-                mevModels: _mevModels,
-                newsType: '3',
-                colorBorder: menadzmentMainColor,
-                colorFill: menadzmentMainColor.withOpacity(0.5),
+            )
+            : TextField(
+                decoration: InputDecoration(
+                    icon: Icon(Icons.search, color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.white),
+                    hintText: 'Search here'),
               ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [gradientStartColor, gradientEndColor],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.3, 0.7])),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 18.0),
+          child: Center(
+            child: Stack(
+              children: [
+                Center(
+                  child: ClipPath(
+                    clipper: BackgroundClipper(),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.96,
+                      height: MediaQuery.of(context).size.height * 0.85,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [menadzmentMainColor, menadzmentEndColor],
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight)),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 7, right: 7),
+                  child: NewsList(
+                    mevModels: _mevModels,
+                    newsType: '3',
+                    colorBorder: menadzmentMainColor,
+                    colorFill: menadzmentMainColor.withOpacity(0.5),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

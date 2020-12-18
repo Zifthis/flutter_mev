@@ -38,7 +38,7 @@ class NewsList extends StatelessWidget {
                       color: colorFill.withOpacity(0.5),
                     ),
                     height: 100,
-                    margin: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.only(bottom: 6,top: 6),
                     child: Row(
                       children: [
                         Card(
