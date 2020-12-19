@@ -10,9 +10,11 @@ class Menadzment extends StatefulWidget {
   _MenadzmentState createState() => _MenadzmentState();
 }
 
+
 class _MenadzmentState extends State<Menadzment> {
   Future<MevModels> _mevModels;
   bool isSearching = false;
+
 
   @override
   void initState() {
@@ -26,39 +28,39 @@ class _MenadzmentState extends State<Menadzment> {
         actions: [
           isSearching
               ? IconButton(
-                  icon: Icon(Icons.cancel, color: Colors.white),
-                  onPressed: () {
-                    setState(() {
-                      this.isSearching = false;
-                    });
-                  },
-                )
+            icon: Icon(Icons.cancel, color: Colors.white),
+            onPressed: () {
+              setState(() {
+                this.isSearching = false;
+              });
+            },
+          )
               : IconButton(
-                  icon: Icon(Icons.search, color: Colors.white),
-                  onPressed: () {
-                    setState(() {
-                      this.isSearching = true;
+            icon: Icon(Icons.search, color: Colors.white),
+            onPressed: () {
+              setState(() {
+                this.isSearching = true;
 
-                    });
-                  },
-                ),
+              });
+            },
+          ),
         ],
         backgroundColor: Colors.lightBlue,
         title: !isSearching
             ? Text(
-              'Menadžment',
-              style: TextStyle(
-                fontFamily: 'Verdana',
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            )
+          'Menadžment',
+          style: TextStyle(
+            fontFamily: 'Verdana',
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        )
             : TextField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.search, color: Colors.white),
-                    hintStyle: TextStyle(color: Colors.white),
-                    hintText: 'Search here'),
-              ),
+          decoration: InputDecoration(
+              icon: Icon(Icons.search, color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white),
+              hintText: 'Search here'),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -76,8 +78,14 @@ class _MenadzmentState extends State<Menadzment> {
                   child: ClipPath(
                     clipper: BackgroundClipper(),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.96,
-                      height: MediaQuery.of(context).size.height * 0.85,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * 0.96,
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.85,
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
                               colors: [menadzmentMainColor, menadzmentEndColor],
@@ -103,3 +111,4 @@ class _MenadzmentState extends State<Menadzment> {
     );
   }
 }
+

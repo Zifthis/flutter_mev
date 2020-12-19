@@ -15,6 +15,7 @@ class NewsList extends StatelessWidget {
   final Color colorBorder;
   final Color colorFill;
 
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<MevModels>(
@@ -24,9 +25,9 @@ class NewsList extends StatelessWidget {
           return ListView.builder(
               itemCount: snapshot.data.novosti.length,
               itemBuilder: (context, index) {
-                var racNovosti = snapshot.data.novosti[index];
+                var mevNovosti = snapshot.data.novosti[index];
                 bool isEmpty;
-                if (racNovosti.tipNovosti == newsType) {
+                if (mevNovosti.tipNovosti == newsType) {
                   return Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -38,7 +39,7 @@ class NewsList extends StatelessWidget {
                       color: colorFill.withOpacity(0.5),
                     ),
                     height: 100,
-                    margin: const EdgeInsets.only(bottom: 6,top: 6),
+                    margin: const EdgeInsets.only(bottom: 6, top: 6),
                     child: Row(
                       children: [
                         Card(
@@ -49,7 +50,7 @@ class NewsList extends StatelessWidget {
                           child: AspectRatio(
                               aspectRatio: 1,
                               child: Image.network(
-                                racNovosti.slika,
+                                mevNovosti.slika,
                                 fit: BoxFit.cover,
                               )),
                         ),
@@ -59,13 +60,13 @@ class NewsList extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                racNovosti.naslov,
+                                mevNovosti.naslov,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize: 22, fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                racNovosti.podNaslov,
+                                mevNovosti.podNaslov,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 17,
@@ -73,7 +74,7 @@ class NewsList extends StatelessWidget {
                                 maxLines: 2,
                               ),
                               Text(
-                                racNovosti.datumObjave.toString(),
+                                mevNovosti.datumObjave.toString(),
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 10,
@@ -87,8 +88,9 @@ class NewsList extends StatelessWidget {
                                     PageRouteBuilder(
                                       pageBuilder: (context, a, b) =>
                                           DetailScreen(
-                                        novosti: snapshot.data.novosti[index],
-                                      ),
+                                            novosti: snapshot.data
+                                                .novosti[index],
+                                          ),
                                     ),
                                   );
                                 },
