@@ -15,27 +15,13 @@ class _RacunarstvoState extends State<Racunarstvo> {
 
   @override
   void initState() {
+    super.initState();
     _mevModels = MevApiProvider().getApi();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black,
-            onPressed: () {},
-          ),
-        ],
-        backgroundColor: titleTextColor,
-        title: Text(
-          'Racunarstvo',
-          style: TextStyle(
-              fontFamily: 'Verdana', fontSize: 20, color: Colors.black),
-        ),
-      ),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(

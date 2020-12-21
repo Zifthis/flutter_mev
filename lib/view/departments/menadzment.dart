@@ -5,63 +5,26 @@ import 'package:flutter_mev/components/list_builder.dart';
 import 'package:flutter_mev/models/mev_models.dart';
 import 'package:flutter_mev/service/api_provider.dart';
 
+import '../detail_screen.dart';
+
 class Menadzment extends StatefulWidget {
   @override
   _MenadzmentState createState() => _MenadzmentState();
 }
 
-
 class _MenadzmentState extends State<Menadzment> {
   Future<MevModels> _mevModels;
-  bool isSearching = false;
 
 
   @override
   void initState() {
+    super.initState();
     _mevModels = MevApiProvider().getApi();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          isSearching
-              ? IconButton(
-            icon: Icon(Icons.cancel, color: Colors.white),
-            onPressed: () {
-              setState(() {
-                this.isSearching = false;
-              });
-            },
-          )
-              : IconButton(
-            icon: Icon(Icons.search, color: Colors.white),
-            onPressed: () {
-              setState(() {
-                this.isSearching = true;
-
-              });
-            },
-          ),
-        ],
-        backgroundColor: Colors.lightBlue,
-        title: !isSearching
-            ? Text(
-          'Menadžment',
-          style: TextStyle(
-            fontFamily: 'Verdana',
-            fontSize: 20,
-            color: Colors.white,
-          ),
-        )
-            : TextField(
-          decoration: InputDecoration(
-              icon: Icon(Icons.search, color: Colors.white),
-              hintStyle: TextStyle(color: Colors.white),
-              hintText: 'Search here'),
-        ),
-      ),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -78,14 +41,8 @@ class _MenadzmentState extends State<Menadzment> {
                   child: ClipPath(
                     clipper: BackgroundClipper(),
                     child: Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width * 0.96,
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.85,
+                      width: MediaQuery.of(context).size.width * 0.96,
+                      height: MediaQuery.of(context).size.height * 0.85,
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
                               colors: [menadzmentMainColor, menadzmentEndColor],
@@ -111,4 +68,3 @@ class _MenadzmentState extends State<Menadzment> {
     );
   }
 }
-

@@ -15,30 +15,13 @@ class _OdrziviRazvojState extends State<OdrziviRazvoj> {
 
   @override
   void initState() {
+    super.initState();
     _mevModels = MevApiProvider().getApi();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black,
-            onPressed: () {},
-          ),
-        ],
-        backgroundColor: titleTextColor,
-        title: Text(
-          'Održivi Razvoj',
-          style: TextStyle(
-            fontFamily: 'Verdana',
-            fontSize: 20,
-            color: Colors.black,
-          ),
-        ),
-      ),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
